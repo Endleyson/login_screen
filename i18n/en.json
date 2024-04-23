@@ -1,0 +1,20 @@
+{
+  "senha": "Password",
+  "lembrar_senha": "Remember me",
+  "aguarde_processando":"Please wait, processing...",
+  "usuario_senha_invalido": "User/Password invalid",
+  "erro_sso":"Verify that the user used is the same registered in the system.",
+  "aguarde_carregando": "Please wait, loading...",
+  "verifique_conexao": "Check that you have an internet connection or that the Username/Password is correct",
+  "acessar": "Login",
+  "acessar_com_google": "Access using Google",
+  "esqueceu_senha": "I forgot my password",
+  "recuperar_senha": "Recover Password",
+  "recuperar_senha_solicitacao": "Recovery request performed, check your email box",
+  "recuperar_senha_solicitacao_erro": "Failed to request password recovery, check if you entered the e-mail correctly",
+  "esqueci_a_senha": "Forgot the password",
+  "msg_esqueci_page":"Enter your registered email and click on the \"Recover Password\" button, you will receive a recovery link in your email.",
+  "informe_email_valido": "Enter a valid e-mail",
+  "senha_vazia":"Password field is empty!",
+  "sua_logo": "THE LOGO IS HERE"
+}

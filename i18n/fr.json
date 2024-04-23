@@ -1,0 +1,20 @@
+{
+  "senha": "Mot de passe",
+  "lembrar_senha": "Mémoriser",
+  "aguarde_processando":"Veuillez patienter, traitement...",
+  "usuario_senha_invalido": "Utilisateur / mot de passe invalide",
+  "erro_sso":"Vérifiez que l'utilisateur utilisé est le même enregistré dans le système.",
+  "aguarde_carregando": "Veuillez attendre, chargement...",
+  "verifique_conexao": "Vérifiez que vous disposez d'une connexion Internet ou que le nom d'utilisateur/mot de passe est correct",
+  "acessar": "Connexion",
+  "acessar_com_google": "Connectez-vous avec Google",
+  "esqueceu_senha": "J'ai oublié? ",
+  "recuperar_senha": "Récupérer le mot de passe",
+  "recuperar_senha_solicitacao": "Demande de récupération effectuée, vérifiez votre boîte e-mail",
+  "recuperar_senha_solicitacao_erro": "Impossible de demander la récupération du mot de passe, vérifiez si vous avez entré correctement l'e-mail",
+  "esqueci_a_senha": "J'ai oublié",
+  "msg_esqueci_page":"Entrez votre email enregistré et cliquez sur le bouton \"Récupérer le mot de passe\", vous recevrez un lien de récupération dans votre email.",
+  "informe_email_valido": "Entrez une adresse e-mail",
+  "senha_vazia":"Le champ du mot de passe est vide!",
+  "sua_logo": "LE LOGO EST ICI"
+}

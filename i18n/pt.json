@@ -1,0 +1,20 @@
+{
+  "senha": "Senha",
+  "lembrar_senha": "Lembrar-me",
+  "aguarde_processando":"Aguarde, processando...",
+  "usuario_senha_invalido": "Usuário/Senha inválido",
+  "erro_sso":"Verifique se o usuário utilizado é o mesmo cadastrado no sistema.",
+  "aguarde_carregando": "Aguarde, carregando...",
+  "verifique_conexao": "Verifique se há conexão com a internet ou se o Usuário/Senha estão corretos",
+  "acessar": "Acessar",
+  "acessar_com_google": "Acessar usando Google",
+  "esqueceu_senha": "Esqueci minha senha",
+  "recuperar_senha_solicitacao_erro": "Falha ao solicitar a recuperação de senha, verifique se informou o e-mail corretamente",
+  "recuperar_senha": "Recuperar Senha",
+  "recuperar_senha_solicitacao": "Solicitação de recuperação realizada, verifique sua caixa de e-mail",
+  "esqueci_a_senha": "Esqueci a senha",
+  "msg_esqueci_page":"Digite o seu e-mail cadastrado e clique no botão \"Recuperar Senha\", você receberá um linkd e recuperação em seu e-mail.",
+  "informe_email_valido": "Informe um e-mail válido",
+  "senha_vazia":"Campo senha esta vazio!",
+  "sua_logo": "A LOGO FICA AQUI"
+}

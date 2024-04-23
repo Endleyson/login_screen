@@ -1,0 +1,20 @@
+{
+  "senha": "Contraseña",
+  "lembrar_senha": "Recuérdame",
+  "aguarde_processando":"Por favor espere, procesando...",
+  "usuario_senha_invalido": "Usuario/Contraseña inválida",
+  "erro_sso":"Verificar que el usuario utilizado es el mismo registrado en el sistema.",
+  "aguarde_carregando": "Por favor espera, cargando...",
+  "verifique_conexao": "Compruebe que tiene conexión a Internet o que el Nombre de Usuario/Contraseña es correcto",
+  "acessar": "Iniciar Sesión",
+  "acessar_com_google": "Acceder mediante Google",
+  "esqueceu_senha": "Olvide mi contraseña",
+  "recuperar_senha": "Recuperar contraseña",
+  "recuperar_senha_solicitacao": "Solicitud de recuperación realizada, marque su casilla de correo electrónico",
+  "recuperar_senha_solicitacao_erro": "No se pudo solicitar la recuperación de la contraseña, verifique si ingresó el correo electrónico correctamente",
+  "esqueci_a_senha": "Olvidé la contraseña",
+  "msg_esqueci_page":"Ingrese su correo electrónico registrado y haga clic en el botón \"Recuperar contraseña\", recibirá un enlace de recuperación en su correo electrónico.",
+  "informe_email_valido": "Introduzca un correo electrónico válido",
+  "senha_vazia":"¡El campo de contraseña está vacío!",
+  "sua_logo": "EL LOGO ESTÁ AQUÍ"
+}
