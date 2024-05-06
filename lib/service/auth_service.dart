@@ -91,22 +91,26 @@ class AuthService {
       'version': Configuration.version,
     };
     String bodyString = json.encode(body);
+    try {
+      http.Response response = await http.post(
+          Uri.parse('${Configuration.urlApi}/app/resetpwd'),
+          headers: {'Content-Type': 'application/json'},
+          body: bodyString);
 
-    http.Response response = await http.post(
-        Uri.parse('${Configuration.urlApi}/app/resetpwd'),
-        headers: {'Content-Type': 'application/json'},
-        body: bodyString);
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonResponse = json.decode(response.body);
 
-    if (response.statusCode == 200) {
-      Map<String, dynamic> jsonResponse = json.decode(response.body);
+        bool status =
+            jsonResponse.containsKey('status') ? jsonResponse['status'] : false;
 
-      bool status =
-          jsonResponse.containsKey('status') ? jsonResponse['status'] : false;
+        return status;
+      }
 
-      return status;
+      return false;
+    } catch (e) {
+      debugPrint("+++++ $e");
+      return false;
     }
-
-    return false;
   }
 
   Future<Authentication> signInWithGoogle(String email, String googleId) async {
