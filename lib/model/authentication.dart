@@ -5,6 +5,7 @@ class Authentication {
   String? fullName;
   String? email;
   String? password;
+  String? userImage;
 
   Authentication(
       {this.status = false,
@@ -12,7 +13,8 @@ class Authentication {
       this.userId,
       this.fullName,
       this.email,
-      this.password});
+      this.password,
+      this.userImage});
 
   factory Authentication.fromJson(Map<String, dynamic> json) {
     return Authentication(
@@ -22,6 +24,7 @@ class Authentication {
       email: json.containsKey('email') ? json['email'] : '',
       password: json.containsKey('password') ? json['password'] : '',
       fullName: json.containsKey('full_name') ? json['full_name'] : '',
+      userImage: json.containsKey('user_image') ? json['user_image'] : null,
     );
   }
 
@@ -29,6 +32,8 @@ class Authentication {
         'status': status,
         'message': message,
         'user_id': userId,
+        'email': email,
         'full_name': fullName,
+        'user_image': userImage,
       };
 }

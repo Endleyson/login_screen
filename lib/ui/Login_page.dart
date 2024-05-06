@@ -32,8 +32,6 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
     BlocProvider.getBloc<LoginBloc>().pageState = LoginPageState.auth;
     BlocProvider.getBloc<LoginBloc>().outState.listen((state) async {
       if (state == LoginState.success) {
-        await BlocProvider.getBloc<LoginBloc>().outAuthentication.first;
-
         if (!mounted) return;
 
         Navigator.pushNamedAndRemoveUntil(
@@ -54,22 +52,22 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
   }
 
   _displayDialog(LoginState state) async {
-    double size = MediaQuery.of(context).size.height;
+    double sizeH = MediaQuery.of(context).size.height;
 
     return showDialog(
         context: context,
         barrierDismissible: false,
         builder: (context) => AlertDialog(
-              title: Text('Alert',
+              title: Text(S.of(context)!.translate("atencao")!,
                   style: TextStyle(
                       fontFamily: "Roboto",
                       fontWeight: FontWeight.w700,
-                      fontSize: size * 0.03)),
+                      fontSize: sizeH * 0.03)),
               content: _textAlert(state),
               actions: <Widget>[
                 state == LoginState.loading
                     ? Padding(
-                        padding: EdgeInsets.only(bottom: size * 0.01),
+                        padding: EdgeInsets.only(bottom: sizeH * 0.01),
                         child: Center(
                             child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(
@@ -82,7 +80,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
                           backgroundColor: StaticClass.primaryColor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(Radius.circular(
-                            MediaQuery.of(context).size.height * 0.025,
+                            sizeH * 0.025,
                           ))),
                         ),
                         child: Text(
@@ -92,7 +90,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
                               fontFamily: "Roboto",
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
-                              fontSize: size * 0.02),
+                              fontSize: sizeH * 0.02),
                         ),
                         onPressed: () {
                           Navigator.pushNamedAndRemoveUntil(
@@ -106,7 +104,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
   }
 
   Widget _textAlert(state) {
-    double size = MediaQuery.of(context).size.height;
+    double sizeH = MediaQuery.of(context).size.height;
     String text = "";
     var pageState = BlocProvider.getBloc<LoginBloc>().valuePageState;
     if (state == LoginState.loading && pageState == LoginPageState.forgot) {
@@ -131,7 +129,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
 
     return Text(S.of(context)!.translate(text)!,
         textAlign: TextAlign.center,
-        style: TextStyle(fontFamily: "Roboto", fontSize: size * 0.018));
+        style: TextStyle(fontFamily: "Roboto", fontSize: sizeH * 0.018));
   }
 
   Widget emailCpfField(BuildContext context, LoginPageState loginPageState) {
@@ -162,21 +160,15 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
   }
 
   Widget checkbox(String title, bool boolValue) {
+    double sizeH = MediaQuery.of(context).size.height;
+    double sizeW = MediaQuery.of(context).size.width;
     bool boolValue_ = boolValue;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         SizedBox(
-          width: ((MediaQuery.of(context).size.width *
-                      MediaQuery.of(context).size.height) /
-                  (MediaQuery.of(context).size.width +
-                      MediaQuery.of(context).size.height)) *
-              0.05,
-          height: ((MediaQuery.of(context).size.width *
-                      MediaQuery.of(context).size.height) /
-                  (MediaQuery.of(context).size.width +
-                      MediaQuery.of(context).size.height)) *
-              0.05,
+          width: ((sizeW * sizeH) / (sizeW + sizeH)) * 0.05,
+          height: ((sizeW * sizeH) / (sizeW + sizeH)) * 0.05,
           child: Checkbox(
             activeColor: StaticClass.fontColor,
             checkColor: Colors.white,
@@ -209,7 +201,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
             style: TextStyle(
               fontFamily: "Roboto",
               color: StaticClass.fontColor,
-              fontSize: MediaQuery.of(context).size.height * 0.018,
+              fontSize: sizeH * 0.018,
             ),
           ),
         ),
@@ -218,6 +210,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
   }
 
   Widget senhaField(BuildContext context) {
+    double sizeH = MediaQuery.of(context).size.height;
     return StreamBuilder<String>(
         stream: BlocProvider.getBloc<LoginBloc>().outPassword,
         builder: (context, snapshot) {
@@ -237,21 +230,21 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
                 icon: !_obscurePwd
                     ? Icon(
                         Icons.visibility_outlined,
-                        size: MediaQuery.of(context).size.height * 0.025,
+                        size: sizeH * 0.025,
                       )
                     : Icon(
                         Icons.visibility_off_outlined,
-                        size: MediaQuery.of(context).size.height * 0.025,
+                        size: sizeH * 0.025,
                       ),
               ),
               errorStyle: TextStyle(
                   fontFamily: "Roboto",
-                  fontSize: MediaQuery.of(context).size.height * 0.02,
+                  fontSize: sizeH * 0.02,
                   color: Colors.red[200]),
               prefixIcon: Icon(
                 Icons.lock_outline,
                 color: StaticClass.fontColor,
-                size: MediaQuery.of(context).size.height * 0.025,
+                size: sizeH * 0.025,
               ),
               hintText: S.of(context)!.translate('senha')!,
               hintStyle:
@@ -275,13 +268,14 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
             style: TextStyle(
               fontFamily: "Roboto",
               color: StaticClass.fontColor,
-              fontSize: MediaQuery.of(context).size.height * 0.02,
+              fontSize: sizeH * 0.02,
             ),
           );
         });
   }
 
   Widget esqueceuSenha() {
+    double sizeH = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         BlocProvider.getBloc<LoginBloc>().pageState = LoginPageState.forgot;
@@ -296,7 +290,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
               style: TextStyle(
                 fontFamily: "Roboto",
                 color: StaticClass.fontColor,
-                fontSize: MediaQuery.of(context).size.height * 0.02,
+                fontSize: sizeH * 0.02,
               ),
             ),
           ],
@@ -306,19 +300,20 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
   }
 
   Widget acessarButton() {
+    double sizeH = MediaQuery.of(context).size.height;
     return StreamBuilder<bool>(
         stream: BlocProvider.getBloc<LoginBloc>().outSubmitValid,
         initialData: false,
         builder: (context, snapshot) {
           return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.065,
+            height: sizeH * 0.065,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 elevation: 0,
                 backgroundColor: StaticClass.buttonDarkColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(
-                  MediaQuery.of(context).size.height * 0.045,
+                  sizeH * 0.045,
                 ))),
               ),
               onPressed: () async {
@@ -334,7 +329,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
                   fontFamily: "Roboto",
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
-                  fontSize: MediaQuery.of(context).size.height * 0.02,
+                  fontSize: sizeH * 0.02,
                 ),
               ),
             ),
@@ -343,6 +338,8 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
   }
 
   Widget googleButton(BuildContext context) {
+    double sizeH = MediaQuery.of(context).size.height;
+    double sizeW = MediaQuery.of(context).size.width;
     return SizedBox(
         child: ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -350,10 +347,10 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(
-          MediaQuery.of(context).size.height * 0.045,
+          sizeH * 0.045,
         ))),
-        side: const BorderSide(
-          color: Color(0xFFCBCBCB),
+        side: BorderSide(
+          color: StaticClass.backGroundLight,
           width: 1,
         ),
       ),
@@ -366,38 +363,35 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-              height: ((MediaQuery.of(context).size.width *
-                          MediaQuery.of(context).size.height) /
-                      (MediaQuery.of(context).size.width +
-                          MediaQuery.of(context).size.height)) *
-                  0.085,
-              padding: EdgeInsets.only(
-                  right: MediaQuery.of(context).size.width * 0.015),
+              height: ((sizeW * sizeH) / (sizeW + sizeH)) * 0.085,
+              padding: EdgeInsets.only(right: sizeW * 0.015),
               child: _google),
           Text("Google",
               style: TextStyle(
                   fontFamily: "Roboto",
                   fontWeight: FontWeight.w700,
                   color: StaticClass.fontDarkColor,
-                  fontSize: MediaQuery.of(context).size.height * 0.02)),
+                  fontSize: sizeH * 0.02)),
         ],
       ),
     ));
   }
 
   Widget azureButton(BuildContext context) {
+    double sizeH = MediaQuery.of(context).size.height;
+    double sizeW = MediaQuery.of(context).size.width;
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.065,
+      height: sizeH * 0.065,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             elevation: 0,
             backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(
-              MediaQuery.of(context).size.height * 0.045,
+              sizeH * 0.045,
             ))),
-            side: const BorderSide(
-              color: Color(0xFFCBCBCB),
+            side: BorderSide(
+              color: StaticClass.backGroundLight,
               width: 1,
             ),
           ),
@@ -407,20 +401,15 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                    height: ((MediaQuery.of(context).size.width *
-                                MediaQuery.of(context).size.height) /
-                            (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height)) *
-                        0.085,
-                    padding: EdgeInsets.only(
-                        right: MediaQuery.of(context).size.width * 0.015),
+                    height: ((sizeW * sizeH) / (sizeW + sizeH)) * 0.085,
+                    padding: EdgeInsets.only(right: sizeW * 0.015),
                     child: _azure),
                 Text("Microsoft",
                     style: TextStyle(
                         fontFamily: "Roboto",
                         fontWeight: FontWeight.w700,
                         color: StaticClass.fontDarkColor,
-                        fontSize: MediaQuery.of(context).size.height * 0.02))
+                        fontSize: sizeH * 0.02))
               ],
             ),
           ),
@@ -432,6 +421,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
   }
 
   Widget recoveryPassButton(BuildContext context) {
+    double sizeH = MediaQuery.of(context).size.height;
     return SizedBox(
         child: ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -439,10 +429,10 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
         backgroundColor: StaticClass.buttonColor,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(
-          MediaQuery.of(context).size.height * 0.045,
+          sizeH * 0.045,
         ))),
-        side: const BorderSide(
-          color: Color(0xFFCBCBCB),
+        side: BorderSide(
+          color: StaticClass.backGroundLight,
           width: 1,
         ),
       ),
@@ -474,13 +464,14 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
               fontFamily: "Roboto",
               fontWeight: FontWeight.w700,
               color: Colors.white,
-              fontSize: MediaQuery.of(context).size.height * 0.02)),
+              fontSize: sizeH * 0.02)),
     ));
   }
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.height;
+    double sizeH = MediaQuery.of(context).size.height;
+    double sizeW = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: () async {
         if (check == false) {
@@ -497,7 +488,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.startTop,
               floatingActionButton: Padding(
-                padding: EdgeInsets.fromLTRB(0, size * 0.02, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, sizeH * 0.02, 0, 0),
                 child: snapshot.data != LoginPageState.forgot
                     ? Container()
                     : Row(
@@ -510,7 +501,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
                             backgroundColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
-                              Radius.circular(size * 0.1),
+                              Radius.circular(sizeH * 0.1),
                             )),
                             onPressed: () {
                               BlocProvider.getBloc<LoginBloc>().pageState =
@@ -518,15 +509,14 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
                             },
                             child: Center(
                               child: Icon(Icons.arrow_back_rounded,
-                                  size: size * 0.03,
+                                  size: sizeH * 0.03,
                                   color: StaticClass.primaryColor),
                             ),
                           ),
                           Row(
                             children: [
                               SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.35,
+                                  width: sizeW * 0.35,
                                   child: Text(
                                       S
                                           .of(context)!
@@ -535,12 +525,9 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
                                           fontFamily: "Roboto",
                                           fontWeight: FontWeight.w700,
                                           color: Colors.black,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.022))),
+                                          fontSize: sizeH * 0.022))),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.33,
+                                width: sizeW * 0.33,
                               )
                             ],
                           ),
@@ -557,7 +544,7 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
                       return SingleChildScrollView(
                           child: Center(
                         child: SizedBox(
-                          height: MediaQuery.of(context).size.height,
+                          height: sizeH,
                           child: snapshot.data == LoginPageState.auth
                               ? login_(
                                   acessarButton: acessarButton(),
@@ -589,46 +576,46 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
     required Widget emailCpfField,
     required Widget recoveryPassButton,
   }) {
+    double sizeH = MediaQuery.of(context).size.height;
+    double sizeW = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.35,
+          height: sizeH * 0.35,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.075,
-                      right: MediaQuery.of(context).size.height * 0.015),
+                  padding:
+                      EdgeInsets.only(top: sizeH * 0.075, right: sizeH * 0.015),
                   child: Align(
                       alignment: AlignmentDirectional.topCenter,
                       child: Container()),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.080,
-                  width: MediaQuery.of(context).size.width * 0.85,
+                  height: sizeH * 0.080,
+                  width: sizeW * 0.85,
                   child: Text(S.of(context)!.translate('msg_esqueci_page')!,
                       style: TextStyle(
                           fontFamily: "Roboto",
                           fontWeight: FontWeight.w400,
                           color: Colors.black,
-                          fontSize: MediaQuery.of(context).size.height * 0.02)),
+                          fontSize: sizeH * 0.02)),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.065,
-                  width: MediaQuery.of(context).size.width * 0.85,
+                  height: sizeH * 0.065,
+                  width: sizeW * 0.85,
                   child: emailCpfField,
                 ),
               ]),
         ),
         Padding(
-          padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).size.height * 0.05),
+          padding: EdgeInsets.only(bottom: sizeH * 0.05),
           child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.065,
-              width: MediaQuery.of(context).size.width * 0.85,
+              height: sizeH * 0.065,
+              width: sizeW * 0.85,
               child: recoveryPassButton),
         ),
       ],
@@ -643,63 +630,82 @@ class _LoginPageState extends State<LoginPage> with LoginValidator {
       required Widget acessarButton,
       required Widget googleButton,
       required Widget azureButton}) {
+    double sizeH = MediaQuery.of(context).size.height;
+    double sizeW = MediaQuery.of(context).size.width;
     return Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 5,
-            width: MediaQuery.of(context).size.width / 1.8,
-            child: Center(
-              child: Text(
-                S.of(context)!.translate("sua_logo")!,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: "Roboto",
-                    color: StaticClass.fontDarkColor,
-                    fontSize: MediaQuery.of(context).size.height * 0.025,
-                    fontWeight: FontWeight.w700),
+          // sizeHdBox(
+          //   height: sizeH / 5,
+          //   width: sizeW / 1.8,
+          //   child: Center(
+          //     child: Text(
+          //       S.of(context)!.translate("sua_logo")!,
+          //       textAlign: TextAlign.center,
+          //       style: TextStyle(
+          //           fontFamily: "Roboto",
+          //           color: StaticClass.fontDarkColor,
+          //           fontSize: sizeH * 0.025,
+          //           fontWeight: FontWeight.w700),
+          //     ),
+          //   ),
+          // ),
+
+          Padding(
+            padding: EdgeInsets.only(top: sizeH * 0.1),
+            child: Container(
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      color: StaticClass.fontColor, width: sizeH * 0.002)),
+              height: sizeH / 5,
+              width: sizeW,
+              child: CircleAvatar(
+                backgroundColor: StaticClass.buttonLightColor,
+                child: Icon(Icons.person_outline,
+                    color: StaticClass.fontColor.withOpacity(0.6),
+                    size: sizeH * 0.15),
               ),
             ),
           ),
           Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.065,
-                width: MediaQuery.of(context).size.width * 0.85,
+                height: sizeH * 0.065,
+                width: sizeW * 0.85,
                 child: emailCpfField,
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: sizeH * 0.02),
               SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.065,
-                  width: MediaQuery.of(context).size.width * 0.85,
+                  height: sizeH * 0.065,
+                  width: sizeW * 0.85,
                   child: senhaField),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              SizedBox(height: sizeH * 0.01),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.025,
-                width: MediaQuery.of(context).size.width * 0.8,
+                height: sizeH * 0.025,
+                width: sizeW * 0.8,
                 child: esqueceuSenha,
               )
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height * 0.15),
+            padding: EdgeInsets.only(bottom: sizeH * 0.15),
             child: Column(
               children: [
                 SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.065,
-                    width: MediaQuery.of(context).size.width * 0.85,
+                    height: sizeH * 0.065,
+                    width: sizeW * 0.85,
                     child: acessarButton),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                SizedBox(height: sizeH * 0.02),
                 SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.065,
-                    width: MediaQuery.of(context).size.width * 0.85,
+                    height: sizeH * 0.065,
+                    width: sizeW * 0.85,
                     child: googleButton),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                SizedBox(height: sizeH * 0.02),
                 SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.065,
-                    width: MediaQuery.of(context).size.width * 0.85,
+                    height: sizeH * 0.065,
+                    width: sizeW * 0.85,
                     child: azureButton),
               ],
             ),

@@ -16,5 +16,7 @@
   "msg_esqueci_page":"Ingrese su correo electrónico registrado y haga clic en el botón \"Recuperar contraseña\", recibirá un enlace de recuperación en su correo electrónico.",
   "informe_email_valido": "Introduzca un correo electrónico válido",
   "senha_vazia":"¡El campo de contraseña está vacío!",
-  "sua_logo": "EL LOGO ESTÁ AQUÍ"
+  "sua_logo": "EL LOGO ESTÁ AQUÍ",
+  "atencao":"Atención",
+  "bem_vindo":"Bienvenido"
 }

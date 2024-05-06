@@ -16,5 +16,7 @@
   "msg_esqueci_page":"Enter your registered email and click on the \"Recover Password\" button, you will receive a recovery link in your email.",
   "informe_email_valido": "Enter a valid e-mail",
   "senha_vazia":"Password field is empty!",
-  "sua_logo": "THE LOGO IS HERE"
+  "sua_logo": "THE LOGO IS HERE",
+  "atencao":"Attention",
+  "bem_vindo":"Wellcome"
 }

@@ -214,10 +214,10 @@ class LoginBloc extends BlocBase with LoginValidator {
         _stateController.add(LoginState.fail);
       }
     } else {
-      // authentication.email = email!;
-      // authentication.password = password!;
-      // await sharedPreferences.setString(
-      //     'auth', json.encode(authentication.toJson()));
+      authentication.email = email!;
+      authentication.password = password!;
+      await sharedPreferences.setString(
+          'auth', json.encode(authentication.toJson()));
 
       try {
         if (_rememberPasswordController.value) setRememberPassword(true);

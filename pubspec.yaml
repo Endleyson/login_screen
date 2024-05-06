@@ -50,6 +50,8 @@ dependencies:
   http: 
   platform: ^3.1.4
   provider: ^6.1.2
+  shimmer:
+
 
   
 

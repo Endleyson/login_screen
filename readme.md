@@ -1,5 +1,7 @@
 # login screen
 
-Tela de login usando bloc como gerenciador de estado
+Tela de login usando bloc como gerenciador de estado;
 
-aplicação com suporte em 4 linguas
+Aplicação com suporte em 4 linguas;
+
+funções assincronas;

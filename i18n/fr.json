@@ -16,5 +16,7 @@
   "msg_esqueci_page":"Entrez votre email enregistré et cliquez sur le bouton \"Récupérer le mot de passe\", vous recevrez un lien de récupération dans votre email.",
   "informe_email_valido": "Entrez une adresse e-mail",
   "senha_vazia":"Le champ du mot de passe est vide!",
-  "sua_logo": "LE LOGO EST ICI"
+  "sua_logo": "LE LOGO EST ICI",
+  "atencao":"Attention",
+  "bem_vindo":"Bienvenue"
 }

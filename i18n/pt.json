@@ -16,5 +16,7 @@
   "msg_esqueci_page":"Digite o seu e-mail cadastrado e clique no botão \"Recuperar Senha\", você receberá um linkd e recuperação em seu e-mail.",
   "informe_email_valido": "Informe um e-mail válido",
   "senha_vazia":"Campo senha esta vazio!",
-  "sua_logo": "A LOGO FICA AQUI"
+  "sua_logo": "A LOGO FICA AQUI",
+  "atencao":"Atenção",
+  "bem_vindo":"Bem Vindo"
 }
